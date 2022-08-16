@@ -21,7 +21,7 @@ export async function getStaticPaths() {
   const meetups = await meetupCollection.find({}, { _id: 1 }).toArray(); ////查找並只回傳_id
   client.close();
   return {
-    fallback: true, ////提示nextjs我們除了以下產生的路徑,我們還會有更多的valid 網頁
+    fallback: "blocking", ////提示nextjs我們除了以下產生的路徑,我們還會有更多的valid 網頁
     ////true：直接產生一個空的頁面，同時抓取網頁內容
     ////使用blocking的話,頁面準備好之後才會呈現
     ////確認是否包含了所有的路徑,如果使用false,id:m4會出現404,使用true網址改成m4會出現錯誤
